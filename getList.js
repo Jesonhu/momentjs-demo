@@ -18,8 +18,8 @@ const fileDisplaySync = (filePath, fileType) => {
 
     const isExpectType = fileName.indexOf(fileType);
     let itemStr = '';
-    const basicUrl = 'https://jesonhu.github.io/momentjs-demo/'
-    if (isExpectType) {
+    const basicUrl = 'https://jesonhu.github.io/momentjs-demo';
+    if (isExpectType !== -1) {
       itemStr = `[${fileName}](${basicUrl}/${fileName})`;
       conArr.push(itemStr);
     }
