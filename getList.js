@@ -20,7 +20,7 @@ const fileDisplaySync = (filePath, fileType) => {
     let itemStr = '';
     const basicUrl = 'https://jesonhu.github.io/momentjs-demo/'
     if (isExpectType) {
-      itemStr = `[${fileName}](${basicUrl}${filedir}/${fileName})`;
+      itemStr = `[${fileName}](${basicUrl}/${fileName})`;
       conArr.push(itemStr);
     }
   });
