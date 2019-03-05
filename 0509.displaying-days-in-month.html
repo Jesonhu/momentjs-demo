@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>显示-某个月总共有多少天</title>
+</head>
+<body>
+  <div class="wrap count-down"></div>
+
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/displaying/days-in-month/
+    // @see http://momentjs.com/docs/#/displaying/days-in-month/
+
+    const m = {
+      getDayInMonth(...args) {
+        let days = 0;
+        if (args.length === 0) {
+          days = moment().daysInMonth();
+        } else if (args.length === 1) {
+          days = moment(args[0]).daysInMonth();
+        } else if (args.length === 2) {
+          days = moment(args[0], args[1]).daysInMonth();
+        }
+        console.log(args[0] + '月的天数为: ' + days);
+      }
+    }
+
+    // 2019年2月的天数.
+    m.getDayInMonth('2019-01');
+    // => 31.
+    // Desc: 没带格式出错了.
+
+    m.getDayInMonth("2019-02");
+
+    // Desc: 如果加格式化字符串的话，MM 是指 1-12
+    // @see http://momentjs.com/docs/#/parsing/ title: Year, month, and day tokens
+    console.log(moment("2019-02", "YYYY-MM").daysInMonth());
+    
+  </script>
+</body>
+</html>

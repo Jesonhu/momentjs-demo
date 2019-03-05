@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>当前时间-解析</title>
+</head>
+<body>
+  
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script>
+    /* moment.js 相关使用 */
+    const m = {
+      init() {
+        // this.getNow();
+        this.callDate();
+        // this.basicUse();
+      },
+      // @see http://momentjs.cn/docs/#/parsing/now/
+      // @see http://momentjs.com/docs/#/parsing/now/
+      getNow() {
+        const m = moment();
+        console.log('moment:', m);
+        // => moment: M {_isAMomentObject: true, _isUTC: false, _pf: {…}, _locale: P, _d: Fri Mar 01 2019 09:59:05 GMT+0800 (中国标准时间), …}
+        
+        // Desc: 返回一个 moment 实例对象：
+        // M._d: Fri Mar 01 2019 09:59:05 GMT+0800 (中国标准时间) {}
+      },
+      callDate() {
+        const m = moment(new Date());
+        console.log('moment:', m);
+      },
+      basicUse() {
+        const m = moment().format();
+        console.log('moment:', m);
+        // => moment: 2019-03-01T09:47:22+08:00
+      }
+    }
+    m.init();
+    /* Date 对象使用 */
+    const n = {
+      init() {
+        this.getNow();
+        // this.basicUse();
+      },
+      getNow() {
+        const n = new Date();
+        console.log('native', n);
+        // => native Fri Mar 01 2019 10:03:20 GMT+0800 (中国标准时间)
+        // Desc: 返回时间对象实例
+      },
+      basicUse() {
+      }
+    }
+    n.init();
+  </script>
+</body>
+</html>

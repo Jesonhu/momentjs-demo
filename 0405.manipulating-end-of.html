@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>操作-结束时间</title>
+</head>
+<body>
+  <div class="wrap"></div>
+
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/manipulating/end-of/
+    // @see http://momentjs.com/docs/#/manipulating/end-of/
+
+    // 获取今天0时0分0秒
+    const m1 = moment([2019, 2, 4]).endOf('day').format('YYYY年MM月DD日 hh:mm:ss');
+    console.log(m1);
+    // => 2019年03月04日 12:00:00
+
+    // `结束的年` 对于的日期
+    const m2 = moment([2019, 2, 4]).endOf('year').format('YYYY年MM月DD日 hh:mm:ss');
+    console.log(m2);
+    // => 2019年01月01日 12:00:00
+
+    // `结束的月份` 对应的日期
+    const m3 = moment([2019, 2, 4]).endOf('month').format('YYYY年MM月DD日 hh:mm:ss');
+    console.log(m3);
+
+    // `结束的季度` 对应的日期
+    const m4 = moment([2019, 2, 4]).endOf('quarter').format('YYYY年MM月DD日 hh:mm:ss');
+    console.log(m4);
+
+    // `结束的星期` 对应的日期
+    const m5 = moment([2019, 2, 4]).endOf('week').format('YYYY年MM月DD日 hh:mm:ss');
+    console.log(m5);
+
+    // `结束的iso日期` 对应的日期
+    const m6 = moment([2019, 2, 4]).endOf('isoWeek').format('YYYY年MM月DD日 hh:mm:ss');
+    console.log(m6);
+
+    // `结束的天数` 对应的日期
+    const m7 = moment([2019, 2, 4]).endOf('day').format('YYYY年MM月DD日 hh:mm:ss');
+    console.log(m7);
+
+    // `结束的小时` 对应的日期
+    const m8 = moment([2019, 2, 4]).endOf('hour').format('YYYY年MM月DD日 hh:mm:ss');
+    console.log(m8);
+
+    // `结束的分钟` 对应的日期
+    const m9 = moment([2019, 2, 4]).endOf('minute').format('YYYY年MM月DD日 hh:mm:ss');
+    console.log(m9);
+
+    // `结束的秒` 对应的日期
+    const m10 = moment([2019, 2, 4]).endOf('second').format('YYYY年MM月DD日 hh:mm:ss');
+    console.log(m10);
+  </script>
+</body>
+</html>

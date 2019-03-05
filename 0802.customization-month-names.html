@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自定义-月份名.</title>
+</head>
+<body>
+  <div class="wrap count-down"></div>
+
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/customization/month-names/
+    // @see http://momentjs.com/docs/#/customization/month-names/
+    // moment.locale('zh-cn');
+    // Desc: 浏览器环境下引入语言文件就可以了。不用代码设置语言
+    // moment.local() 自定义语言会提示 Deprecation warning:
+    // moment.locale('zh-cn', {
+    moment.updateLocale('zh-cn', {
+      months: ["正月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "冬月", "腊月"]
+    });
+
+    console.log( moment.months(0) );
+    console.log( moment.months(10) );
+    console.log( moment.months(11) );
+  </script>
+</body>
+</html>

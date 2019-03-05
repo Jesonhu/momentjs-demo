@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>解析-字符串+格式</title>
+</head>
+
+<body>
+  <div class="wrap">
+    <h2>moment.js</h2>
+    <div class="con1"></div>
+
+    <h2>Date</h2>
+    <div class="con2"></div>
+  </div>
+  
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    ;(function (win, doc) {
+      moment.locale('zh-cn');
+      /* moment.js 相关使用 */
+      const m = {
+        init() {},
+        // @see http://momentjs.cn/docs/#/parsing/string/
+        // @see http://momentjs.com/docs/#/parsing/string/
+        getDay(str = '') {
+          const day = moment(str);
+          console.log('moment:', day);
+          this.setHtmlValue(day);
+        },
+        // @see http://momentjs.cn/docs/#/parsing/now/
+        // @see http://momentjs.com/docs/#/parsing/string-format/
+        strWidthFormat(str = '', format = '') {
+          const day = moment(str, format);
+
+          this.setHtmlValue(day);
+          // console.log('moment:', day);
+          return day;
+        },
+        setHtmlValue(str) {
+          doc.querySelector('.con1').innerHTML = str;
+        }
+      }
+
+      /* Date 对象使用 */
+      const d = {
+        init() {},
+        /**
+         * 获取字符串对应的日期表示. 
+         */
+        getDay(string) {
+          const day = new Date(string);
+          console.log('Date:', day);
+          this.setHtmlValue(day);
+        },
+        setHtmlValue(str) {
+          doc.querySelector('.con2').innerHTML = str;
+        }
+      }
+
+
+      // const str1 = '2019-02-28';
+      // m.getDay(str1);
+      // d.getDay(str1);
+
+      // m.strWidthFormat('02-28-2019', 'MM-DD-YYYY');
+      // => Thu Feb 28 2019 00:00:00 GMT+0800
+
+      // m.strWidthFormat('2019-02-28', 'MM-DD-YYYY')
+      // => Invalid date
+      // Desc: 传递的时间字符串与后面的格式不匹配，所以报错.
+
+      // m.strWidthFormat('02-28-2019', 'MM-DD-YY');
+      // => Fri Feb 28 2020 00:00:00 GMT+0800
+      // Desc: YY 只取了年份的 20
+
+      const str1 = m.strWidthFormat('2019-02-28', 'YYYY-MM-DD');
+      console.log('str1:', str1);
+      // => Thu Feb 28 2019 00:00:00 GMT+0800
+
+      const str2 = m.strWidthFormat('12/25/1995', 'MM-DD-YYYY');
+      console.log('str2:', str2);
+      // => Mon Dec 25 1995 00:00:00 GMT+0800
+
+      const str3 = m.strWidthFormat('12-25-1995', 'MM-DD-YYYY');
+      console.log('str3:', str3);
+      // => Mon Dec 25 1995 00:00:00 GMT+0800
+
+      const str4 = m.strWidthFormat('2010-10-20 4:30', 'YYYY-MM-DD HH:mm');
+      console.log('str4:', str4);
+      // => Wed Oct 20 2010 04:30:00 GMT+0800
+
+      const str5 = m.strWidthFormat('2010-10-20 4:30 +0000', 'YYYY-MM-DD HH:mm Z');
+      console.log('str5:', str5);
+      // => Wed Oct 20 2010 12:30:00 GMT+0800
+
+
+      console.log(moment("2010 13", "YYYY MM").isValid());
+      // => false (not a real month)
+
+      console.log(moment("2010 11 31",  "YYYY MM DD").isValid());
+      // => false (not a real day)
+
+      console.log(moment("2010 2 29", "YYYY MM DD").isValid());
+      // => false (not a leap year)
+
+      console.log(moment("2010 notamonth 29", "YYYY MMM DD").isValid());
+      // => false (not a real month name)
+
+      const str6 = moment('2012 July', 'YYYY MMM', 'en');
+      console.log(str6);
+      document.querySelector('.wrap').innerHTML = str6;
+
+      const str7 = moment('It is 2012-05-25', 'YYYY-MM-DD').isValid();
+      console.log('str7:', str7);
+      // => true ; 实际上这个时间格式是错误的
+
+      const str8 = moment('It is 2012-05-25', 'YYYY-MM-DD', true).isValid();
+      console.log('str8:', str8);
+      // => false; 符合预期
+
+      const str9 = moment('2012-05-25', 'YYYY-MM-DD', true).isValid();
+      console.log('str9:', str9);
+
+      // 可以同时使用语言和严格模式
+      const str10 = moment('2012-10-14', 'YYYY-MM-DD', 'zh-cn', true);
+      console.log('str10:', str10);
+      
+    })(window, document);
+  </script>
+</body>
+
+</html>

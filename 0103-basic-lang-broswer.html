@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浏览器语言设置</title>
+</head>
+<body>
+  <div class="wrap"></div>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <!-- <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.min.js"></script> -->
+  <!-- <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script> -->
+  <script>
+    /* moment.js 相关使用 */
+    // Desc: 浏览器下语言设置：引入对应的语言.js即可进行更换，无需设置 locale()
+    const str1 = moment().format("YYYY-MM-DD");
+    // const str = moment().format("MMM");
+    console.log('str1:', str1);
+    // => 2019-03-01
+    
+    const str2 = moment('2019-02-28').format('YYYY年MM月DD日 hh:mm:ss');
+    document.querySelector('.wrap').innerHTML = str2;
+    console.log('strs:', str2 );
+    // => 2019年02月28日 12:00:00
+    // Desc: `YYYY年MM月DD日 hh:mm:ss` 使用这种格式的时候可不需要使用语言转换就能达到预期的效果
+
+  </script>
+</body>
+</html>

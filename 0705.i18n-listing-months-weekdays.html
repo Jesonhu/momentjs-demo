@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>国际化-列出月份和星期  </title>
+</head>
+<body>
+  <div class="wrap count-down"></div>
+
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/i18n/listing-months-weekdays/
+    // @see http://momentjs.com/docs/#/i18n/listing-months-weekdays/
+    
+    // 全局设置中文语言.
+    // moment.locale('zh-cn');
+    
+    console.log( moment.months() );
+    console.log( moment.monthsShort() );
+
+    console.log( moment.weekdays() );
+    console.log( moment.weekdaysShort() );
+    console.log( moment.weekdaysMin() );
+
+    console.log( moment.months() );
+
+    console.log( moment.months(0) );
+    // => 1月
+    
+  </script>
+</body>
+</html>

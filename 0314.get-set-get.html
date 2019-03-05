@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>取值/赋值-取值</title>
+</head>
+<body>
+  
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/get-set/get/
+    // @see http://momentjs.com/docs/#/get-set/get/
+    // Desc: 传参数-设置值；不传参数-获取值
+    const m = {
+      init() {
+
+      },
+      basic() {
+
+      },
+      getCommon(str = '') {
+        const m = moment().get(str);
+        const strTxt = this.getOupTxt(str);
+        console.log(strTxt +':', m);
+      },
+      getOupTxt(str) {
+        const year = 'year';
+        const month = 'month';
+        const date = 'date';
+        const hour = 'hour';
+        const minute = 'minute';
+        const second = 'second';
+        const millsecond = 'millisecond';
+        const typeArr = [year, month, date, hour, minute, second, millsecond];
+        const txtArr = ['年', '月', '日期', '小时', '分钟', '秒', '毫秒'];
+        let resTxt = '';
+
+        switch (str) {
+          case typeArr[0]:
+            resTxt = txtArr[0];
+            break;
+          case typeArr[1]:
+            resTxt = txtArr[1];
+            break;
+          case typeArr[2]:
+            resTxt = txtArr[2];
+            break;
+          case typeArr[3]:
+            resTxt = txtArr[3];
+            break;
+          case typeArr[4]:
+            resTxt = txtArr[4];
+            break;
+          case typeArr[5]:
+            resTxt = txtArr[5];
+            break;
+          case typeArr[6]:
+            resTxt = txtArr[6];
+            break;
+        }
+
+        return resTxt;
+      }
+    }
+    m.getCommon('year');
+    m.getCommon('month');
+    m.getCommon('date');
+    m.getCommon('hour');
+    m.getCommon('minute');
+    m.getCommon('second');
+    m.getCommon('millisecond');
+    
+  </script>
+</body>
+</html>

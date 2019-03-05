@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>查询-是否之间.</title>
+</head>
+<body>
+  <div class="wrap count-down"></div>
+
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/query/is-between/
+    // @see http://momentjs.com/docs/#/query/is-between/
+
+    const m = {
+      isBefore(...args) {
+        const r = moment(args[0]).isBefore(args[1]);
+
+        console.log('第一个参数日期是否在第二个参数日期之前：', r);
+      },
+      isSame(...args) {
+        const r = moment(args[0]).isSame(args[1]);
+
+        console.log('两个日期是否相同：', r);
+      },
+      isAfter(...args) {
+        const r = moment(args[0]).isAfter(args[1]);
+
+        console.log('第一个参数日期是否在第二个参数日期之后：', r);
+      },
+      isBetween(...args) {
+        const r = moment(args[0]).isBetween(args[1], args[2]);
+
+        console.log('第一个参数日期是否在后面参数日期之间：', r);
+      }
+    }
+    // 当前日期为: 2019/03/05(中国格式)
+    m.isBetween({year: 2019, month: 2, date: 5}, {year: 2019, month: 2, date: 4}, {year: 2019, month: 2, date: 6});
+    // => 第一个参数日期是否在后面参数日期之间： true
+
+    const r = moment('2019-02-05').isBetween('2019-02-4', '2019-02-06');
+    console.log('结果: ', r);
+    // => 结果:  true
+    // '2019-02-05' 字符串格式表示的时间不是推荐的(Deprecation warning:)。最好不使用
+
+
+    m.isBetween([2019, 2, 5], [2019, 2, 4], [2019, 2, 6]);
+    // 第一个参数日期是否在后面参数日期之间： true
+  </script>
+</body>
+</html>

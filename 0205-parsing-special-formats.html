@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>解析-字符串特殊格式</title>
+</head>
+
+<body>
+  <div class="wrap">
+    <h2>moment.js</h2>
+    <div class="con1"></div>
+
+    <h2>Date</h2>
+    <div class="con2"></div>
+  </div>
+  
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    ;(function (win, doc) {
+      moment.locale('zh-cn');
+      /* moment.js 相关使用 */
+      const m = {
+        init() {},
+        // @see http://momentjs.cn/docs/#/parsing/string/
+        // @see http://momentjs.com/docs/#/parsing/string/
+        getDay(str = '') {
+          const day = moment(str);
+          console.log('moment:', day);
+          this.setHtmlValue(day);
+        },
+        // @see http://momentjs.cn/docs/#/parsing/now/
+        // @see http://momentjs.com/docs/#/parsing/string-format/
+        strWidthFormat(str = '', format = '') {
+          const day = moment(str, format);
+
+          this.setHtmlValue(day);
+          // console.log('moment:', day);
+          return day;
+        },
+        setHtmlValue(str) {
+          doc.querySelector('.con1').innerHTML = str;
+        }
+      }
+
+      /* Date 对象使用 */
+      const d = {
+        init() {},
+        /**
+         * 获取字符串对应的日期表示. 
+         */
+        getDay(string) {
+          const day = new Date(string);
+          console.log('Date:', day);
+          this.setHtmlValue(day);
+        },
+        setHtmlValue(str) {
+          doc.querySelector('.con2').innerHTML = str;
+        }
+      }
+
+
+      // const str1 = '2019-02-28';
+      // m.getDay(str1);
+      // d.getDay(str1);
+
+      // m.strWidthFormat('02-28-2019', 'MM-DD-YYYY');
+      // => Thu Feb 28 2019 00:00:00 GMT+0800
+
+      // 字符串特殊格式.
+      // @see http://momentjs.cn/docs/#/parsing/special-formats/
+      // @see http://momentjs.com/docs/#/parsing/special-formats/
+      m.strWidthFormat("2010-01-01T05:06:07", moment.ISO_8601);
+      
+      // m.strWidthFormat("2010-01-01T05:06:07", ["YYYY", moment.ISO_8601]);
+      
+    })(window, document);
+  </script>
+</body>
+
+</html>

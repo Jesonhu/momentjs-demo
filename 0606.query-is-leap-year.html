@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>查询-是否闰年.</title>
+</head>
+<body>
+  <div class="wrap count-down"></div>
+
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/query/is-leap-year/
+    // @see http://momentjs.com/docs/#/query/is-leap-year/
+    // @see [闰年-百度百科](https://baike.baidu.com/item/%E9%97%B0%E5%B9%B4/27098?fr=aladdin)
+
+    const m = {
+      isBefore(...args) {
+        const r = moment(args[0]).isBefore(args[1]);
+
+        console.log('第一个参数日期是否在第二个参数日期之前：', r);
+      },
+      isSame(...args) {
+        const r = moment(args[0]).isSame(args[1]);
+
+        console.log('两个日期是否相同：', r);
+      },
+      isAfter(...args) {
+        const r = moment(args[0]).isAfter(args[1]);
+
+        console.log('第一个参数日期是否在第二个参数日期之后：', r);
+      },
+      isBetween(...args) {
+        const r = moment(args[0]).isBetween(args[1], args[2]);
+
+        console.log('第一个参数日期是否在后面参数日期之间：', r);
+      },
+      isLeapYear(...args) {
+        const r = moment(args[0]).isLeapYear();
+
+        console.log(args[0][0], '年，是否是闰年: ', r);
+      },
+    }
+    // 当前日期为: 2019/03/05(中国格式)
+    m.isLeapYear([2000]);
+    // => 2000 "年，是否是闰年: " true
+    m.isLeapYear([2001]);
+    // => 2001 "年，是否是闰年: " false
+    m.isLeapYear([2018]);
+    // => 2018 "年，是否是闰年: " false
+    m.isLeapYear([2019]);
+    // => 2019 "年，是否是闰年: " false
+    m.isLeapYear([2020]);
+    // => 2020 "年，是否是闰年: " true
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>查询-是否 Moment 对象.</title>
+</head>
+<body>
+  <div class="wrap count-down"></div>
+
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/query/is-a-moment/
+    // @see http://momentjs.com/docs/#/query/is-a-moment/
+
+    const m = {
+      isBefore(...args) {
+        const r = moment(args[0]).isBefore(args[1]);
+
+        console.log('第一个参数日期是否在第二个参数日期之前：', r);
+      },
+      isSame(...args) {
+        const r = moment(args[0]).isSame(args[1]);
+
+        console.log('两个日期是否相同：', r);
+      },
+      isAfter(...args) {
+        const r = moment(args[0]).isAfter(args[1]);
+
+        console.log('第一个参数日期是否在第二个参数日期之后：', r);
+      },
+      isBetween(...args) {
+        const r = moment(args[0]).isBetween(args[1], args[2]);
+
+        console.log('第一个参数日期是否在后面参数日期之间：', r);
+      },
+      isLeapYear(...args) {
+        const r = moment(args[0]).isLeapYear();
+
+        console.log(args[0][0], '年，是否是闰年: ', r);
+      },
+      isDST(...args) {
+        console.log('arg0', args[0]);
+        const r = moment(args[0]).isDST();
+
+        console.log('是否是夏令时: ', r);
+      },
+      isDSTShifted(...args) {
+        console.log('arg0', args[0]);
+        const r = moment(args[0], args[1]).isDSTShifted();
+
+        console.log('是否被夏令时转换: ', r);
+      },
+      isMoment(...args) {
+        const r = moment.isMoment(args[0]);
+
+        console.log('是否 Moment 对象: ', r);
+      },
+    }
+    // 当前日期为: 2019/03/05(中国格式)
+    m.isMoment();
+    // => 是否 Moment 对象:  false
+
+    m.isMoment(moment({year: 2019}));
+    // => 是否 Moment 对象:  true
+
+    m.isMoment(new Date());
+    // => 是否 Moment 对象:  false
+
+  </script>
+</body>
+</html>

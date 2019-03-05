@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>解析-是否有效</title>
+</head>
+<body>
+  
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/parsing/is-valid/
+    // @see http://momentjs.com/docs/#/parsing/is-valid/
+    const m = {
+      init() {
+
+      },
+      /**
+       * 时区.
+       */
+      parseZone(str) {
+        // moment().zone is deprecated
+        const result = moment.parseZone(str).zone();
+        const result2 = moment().utcOffset();
+        console.log('parseZone:', result);
+        console.log('parseZone:', result2);
+      },
+      validate(str) {
+        const m = moment(str).isValid();
+        if (m) {
+          console.log('validate:', m);
+        } else { // 无效
+          const notice = moment(str).invalidAt();
+          const YEAR = 0;
+          const MONTHS = 1;
+          const DAYS = 2;
+          const HOURS = 3;
+          const MINUTES = 4;
+          const SECONDS = 5;
+          const MILLISECONDS = 6;
+          const typeArr = [YEAR, MONTHS, DAYS, HOURS, MINUTES, SECONDS, MILLISECONDS];
+          let msg = ';'
+          switch (notice) {
+            case typeArr[0]:
+              msg = '无效: 年';
+              break;
+            case typeArr[1]:
+              msg = '无效：月';
+              break;
+            case typeArr[2]:
+              msg = '无效: 号(月中的天)'
+              break;
+            case typeArr[3]:
+              msg = '无效：小时';
+              break;
+            case typeArr[4]:
+              msg = '无效: 分钟';
+              break;
+            case typeArr[5]:
+              msg = '无效：秒';
+              break;
+            case typeArr[6]:
+              msg = '无效: 毫秒';
+              break;
+          }
+          console.log(msg);
+        }
+      }
+    }
+    m.validate('2011-10-10T10:20:90');
+    // => false
+    // Desc： `10:20:90` 不存在 `90s` 的情况
+    m.validate('2011-10-10T10:20:30');
+    // => true
+  </script>
+</body>
+</html>

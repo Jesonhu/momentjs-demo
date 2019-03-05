@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>显示-转为数组表示的日期.</title>
+</head>
+<body>
+  <div class="wrap count-down"></div>
+
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/displaying/as-array/
+    // @see http://momentjs.com/docs/#/displaying/as-array/
+
+    const m = {
+      getDayInMonth(...args) {
+        let days = 0;
+        if (args.length === 0) {
+          days = moment().daysInMonth();
+        } else if (args.length === 1) {
+          days = moment(args[0]).daysInMonth();
+        } else if (args.length === 2) {
+          days = moment(args[0], args[1]).daysInMonth();
+        }
+        console.log(args[0] + '月的天数为: ' + days);
+      },
+      toDate(m) {
+        const d = m.toDate();
+        const year = d.getFullYear();
+        const date = d.getDate();
+        console.log('原生Date获取的年份为: ', year);
+        console.log('原生Date获取的日期为: ', date, '号');
+      },
+      toArray(m) {
+        const arr = m.toArray();
+        console.log('数组方式表示的日期为: ', arr);
+      }
+    }
+    // 2019年3月5号.
+    m.toArray(moment({year: 2019, month: 2, date: 5}));
+    
+  </script>
+</body>
+</html>

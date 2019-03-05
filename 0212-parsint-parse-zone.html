@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>解析-时区</title>
+</head>
+<body>
+  
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    const m = {
+      init() {
+
+      },
+      /**
+       * 时区.
+       */
+      parseZone(str) {
+        // moment().zone is deprecated
+        const result = moment.parseZone(str).zone();
+        const result2 = moment().utcOffset();
+        console.log('parseZone:', result);
+        console.log('parseZone:', result2);
+      }
+    }
+    const str = moment();
+    m.parseZone(str);
+  </script>
+</body>
+</html>

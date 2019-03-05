@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>取值/赋值-天数</title>
+</head>
+<body>
+  
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/get-set/day-of-year/
+    // @see http://momentjs.com/docs/#/get-set/day-of-year/
+    // Desc: 传参数-设置值；不传参数-获取值
+    const m = {
+      init() {
+
+      },
+      basic() {
+
+      },
+      getDayOfYear() {
+        const s = moment().dayOfYear();
+        console.log('获取-年中天:', s);
+      },
+      setDayOfYear(n = 0) {
+        const s = moment().dayOfYear(n);
+        console.log('设置-年中天:', s);
+      },
+      getUTCDayOfYear() {
+        const s = moment.utc().dayOfYear();
+        console.log('获取-年中天:', s);
+      },
+      setUTCDayOfYear(n = 0) {
+        const s = moment.utc().dayOfYear(n);
+        console.log('设置-年中天:', s);
+      }
+    }
+    m.getDayOfYear();
+  </script>
+</body>
+</html>

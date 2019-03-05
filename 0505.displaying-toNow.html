@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>显示-时差(之后，现在为基准)</title>
+</head>
+<body>
+  <div class="wrap"></div>
+
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/displaying/tonow/
+    // @see http://momentjs.cn/docs/#/displaying/tonow/
+    // Desc: 单位会自动换 年 月 日 时 分 秒 毫秒
+
+    // 案例创建时间为: 2019/03/04 17:34:??:??
+    const m1 = moment([2019, 2, 3]).toNow();
+    const m2 = moment([2019, 2, 3]).toNow(true);
+
+    console.log('m1:', m1);
+    // => m1: 2 天内
+    console.log('m2:', m2);
+    // => m2: 2 天
+
+    // 
+    const m3 = moment([2019, 2, 5]).toNow();
+    const m4 = moment([2019, 2, 5]).toNow(true);
+    console.log('m3:', m3);
+    // => m3: 6 小时前
+    // Notice: 现在的时间为 2019/03/04 17:41:??:??, 传的时间为明天的时间
+    // 由于是以现在为基准，所以是 `xxx 前`
+    console.log('m4:', m4);
+    // m4: 6 小时
+  </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>显示-时差 (毫秒)</title>
+</head>
+<body>
+  <div class="wrap count-down"></div>
+
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/displaying/difference/
+    // @see http://momentjs.cn/docs/#/displaying/difference/
+
+    // 案例创建时间为: 2019/03/04 18:09:??:??
+    const m1 = moment([2019, 2, 4]);
+    const m2 = moment([2019, 2, 5]);
+    const r1 = m1.diff(m2);
+    const r2 = m2.diff(m1);
+    console.log('r1: ', r1);
+    // => -86400000
+    console.log('r2: ', r2);
+    // => 86400000
+
+    const r3 = m2.diff(m1, 'seconds');
+    console.log('r3: ', r3);
+
+    const mJQuery = {
+      addClass(el, attr) {
+        for (let key in attr) {
+          if (attr.hasOwnProperty(key)) {
+            el.style[key] = attr[key];
+          }
+        }
+      }
+    }
+
+    const countDownExample = {
+      init(endTime, startTime) {
+        this.endTime = moment(endTime);
+
+        this.initView();
+      },
+      initView() {
+        this.el = document.querySelector('.count-down');
+        this.el.innerHTML = `<span class="hour"></span><span class="minute"></span><span class="second"></span>`;
+        this.elHour = this.el.querySelector('.hour');
+        this.elMinute = this.el.querySelector('.minute');
+        this.elSecond = this.el.querySelector('.second');
+        this.initStyle(this.elHour, this.elMinute, this.elSecond);
+      },
+      initStyle(elHour, elMinute, elSecond) {
+        mJQuery.addClass(elHour, {
+          display: 'inline-block',
+          padding: '5px 10px',
+          boxSizing: 'border-box',
+          border: '1px solid  #999',
+          width: '80px',
+          height: '50px',
+          lineHeight: '40px',
+          textAlign: 'center',
+          marginLeft: '10px',
+          fontSize: '14px'
+        });
+
+        mJQuery.addClass(elMinute, {
+          display: 'inline-block',
+          padding: '5px 10px',
+          boxSizing: 'border-box',
+          border: '1px solid  #999',
+          width: '80px',
+          height: '50px',
+          lineHeight: '40px',
+          textAlign: 'center',
+          marginLeft: '10px',
+          fontSize: '14px'
+        });
+
+        mJQuery.addClass(elSecond, {
+          display: 'inline-block',
+          padding: '5px 10px',
+          boxSizing: 'border-box',
+          border: '1px solid  #999',
+          width: '80px',
+          height: '50px',
+          lineHeight: '40px',
+          textAlign: 'center',
+          marginLeft: '10px',
+          fontSize: '14px'
+        });
+
+        this.countDown();
+      },
+      countDown() {
+        const self = this;
+        this.countDownTimer = setInterval(() => {
+          const a = moment(self.endTime);
+          const b = moment();
+          const diffSecound = a.diff(b, 'seconds');
+
+          const dayVal = Math.floor(diffSecound/(60*60*24));
+          let hourVal = Math.floor((diffSecound - dayVal*60*60*24) / (60*60));
+          let minuteVal = Math.floor((diffSecound - dayVal*60*60*24 - hourVal*60*60) / 60);
+          let secondsVal = Math.floor(diffSecound - dayVal*60*60*24 - hourVal*60*60 - minuteVal*60);
+          
+          if (hourVal < 10) {
+            hourVal = '0' + hourVal;
+          }
+          hourVal = hourVal + '时';
+          if (minuteVal < 10) {
+            minuteVal = '0' + minuteVal;
+          }
+          minuteVal = minuteVal + '分';
+          if (secondsVal < 10) {
+            secondsVal = '0' + secondsVal;
+          }
+          secondsVal = secondsVal + '秒';
+
+          if (diffSecound > 0) {
+            this.elHour.innerHTML = hourVal;
+            this.elMinute.innerHTML = minuteVal;
+            this.elSecond.innerHTML = secondsVal;
+          } else {
+            this.elHour.innerHTML = '00时';
+            this.elMinute.innerHTML = '00分';
+            this.elSecond.innerHTML = '00秒';
+            clearInterval(self.countDownTimer);
+            setTimeout(() => {
+              alert('倒计时活动已结束');
+            }, 0);
+          }
+        }, 1000); 
+      }
+      
+    }
+    countDownExample.init([2019, 2, 5, 9, 38]);
+    
+  </script>
+</body>
+</html>

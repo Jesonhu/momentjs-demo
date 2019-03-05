@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>显示-格式化</title>
+</head>
+<body>
+  <div class="wrap"></div>
+
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/displaying/format/
+    // @see http://momentjs.com/docs/#/displaying/format/
+
+    const m1 = moment([2019, 2, 4]).format('YYYY年-MM月-DD日 hh:mm:ss');
+    console.log('m1:', m1);
+
+    const m2 = moment().format('YYYY年-MM月-DD日 hh:mm:ss');
+    console.log('m2:', m2);
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>取值/赋值-年</title>
+</head>
+<body>
+  
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/get-set/year/
+    // @see http://momentjs.com/docs/#/get-set/year/
+    // Desc: 传参数-设置值；不传参数-获取值
+    const m = {
+      init() {
+
+      },
+      basic() {
+
+      },
+      getYear() {
+        const s = moment().year();
+        console.log('获取-年:', s);
+      },
+      setYear(n = 0) {
+        const s = moment().year(n);
+        console.log('设置-年:', s);
+      },
+      getUTCYear() {
+        const s = moment.utc().year();
+        console.log('获取-年:', s);
+      },
+      setUTCYear(n = 0) {
+        const s = moment.utc().year(n);
+        console.log('设置-年:', s);
+      }
+    }
+    m.getYear();
+    
+  </script>
+</body>
+</html>

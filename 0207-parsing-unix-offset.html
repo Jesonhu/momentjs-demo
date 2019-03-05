@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>解析-Unix 偏移量 (毫秒) </title>
+</head>
+
+<body>
+  <div class="wrap">
+    <h2>moment.js</h2>
+    <div class="con1"></div>
+
+    <h2>Date</h2>
+    <div class="con2"></div>
+  </div>
+  
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    ;(function (win, doc) {
+
+
+
+      // 字符串特殊格式.
+      // @see http://momentjs.cn/docs/#/parsing/unix-offset/
+      // @see http://momentjs.com/docs/#/parsing/unix-offset/
+      const day1 = moment(1318781876406);
+      document.querySelector('.wrap').innerHTML = day1;
+      console.log('day1:', day1);
+
+      const day2 = moment.unix(1318781876.721);
+      document.querySelector('.wrap').innerHTML = day2;
+      console.log('day2:', day2);
+      
+    })(window, document);
+  </script>
+</body>
+
+</html>

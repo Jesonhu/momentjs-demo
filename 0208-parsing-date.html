@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>解析-日期对象</title>
+</head>
+
+<body>
+  <div class="wrap">
+    <h2>moment.js</h2>
+    <div class="con1"></div>
+
+    <h2>Date</h2>
+    <div class="con2"></div>
+  </div>
+  
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    ;(function (win, doc) {
+
+
+
+      // 字符串特殊格式.
+      // @see http://momentjs.cn/docs/#/parsing/date/
+      // @see http://momentjs.com/docs/#/parsing/date/
+      const date = new Date(2018, 9, 16);
+      const day1 = moment(date);
+      console.log('day1:', day1);
+      document.querySelector('.wrap').innerHTML = day1;
+      
+    })(window, document);
+  </script>
+</body>
+
+</html>

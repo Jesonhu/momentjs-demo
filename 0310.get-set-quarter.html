@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>取值/赋值-季度</title>
+</head>
+<body>
+  
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/get-set/quarter/
+    // @see http://momentjs.com/docs/#/get-set/quarter/
+    // Desc: 传参数-设置值；不传参数-获取值
+    const m = {
+      init() {
+
+      },
+      basic() {
+
+      },
+      getQuarter() {
+        const s = moment().quarter();
+        console.log('获取-季度:', s);
+      },
+      setQuarter(n = 0) {
+        const s = moment().quarter(n);
+        console.log('设置-季度:', s);
+      },
+      getUTCQuarter() {
+        const s = moment.utc().quarter();
+        console.log('获取-季度:', s);
+      },
+      setUTCQuarter(n = 0) {
+        const s = moment.utc().quarter(n);
+        console.log('设置-季度:', s);
+      }
+    }
+    m.getQuarter();
+    // => 1 (2019/03/04)
+
+    const q1 = moment('2013-10-01T00:00:00.000').quarter();
+    const q2 = moment('2013-10-01T00:00:00.000').subtract(1, 'ms').quarter();
+    console.log('当前季度:', q1);
+    // => 4;
+    console.log('上季度:', q2);
+    // => 3;
+  </script>
+</body>
+</html>

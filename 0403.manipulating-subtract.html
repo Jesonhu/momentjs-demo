@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>操作-减法</title>
+</head>
+<body>
+  <div class="wrap"></div>
+
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/manipulating/subtract/
+    // @see http://momentjs.com/docs/#/manipulating/subtract/
+
+    const m2 = moment([2019, 2, 4]).subtract(2, 'days').format('YYYY年MM月DD日');
+    console.log('前天是: ', m2);
+    document.querySelector('.wrap').innerHTML = m2;
+  </script>
+</body>
+</html>

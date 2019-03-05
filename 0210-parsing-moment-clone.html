@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>解析-克隆</title>
+</head>
+
+<body>
+  <div class="wrap">
+    <h2>moment.js</h2>
+    <div class="con1"></div>
+
+    <h2>Date</h2>
+    <div class="con2"></div>
+  </div>
+  
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    ;(function (win, doc) {
+
+
+
+      // @see http://momentjs.cn/docs/#/parsing/moment-clone/
+      // @see http://momentjs.com/docs/#/parsing/moment-clone/
+      const a = moment([2012]);
+      const b = moment(a);
+      a.year(2000);
+      console.log('b.year:', b.year());
+      // => 2012
+
+      const c = moment([2012]);
+      const d = c.clone();
+      c.year(2000);
+      console.log('d.year:', d.year());
+      // => 2012
+
+      const e = moment([2012]);
+      const f = e;
+      e.year(2000);
+      console.log('f.year:', f.year());
+      // => 2000
+      
+    })(window, document);
+  </script>
+</body>
+
+</html>

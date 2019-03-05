@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>取值/赋值-最大值</title>
+</head>
+<body>
+  
+
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/get-set/max/
+    // @see http://momentjs.com/docs/#/get-set/max/
+    // Desc: 获取多个时间中最大的一个
+
+    const a = moment().subtract(1, 'day');
+    a.mmID = 'a';
+    const b = moment().add(1, 'day');
+    b.mmID = 'b';
+    const max = moment.max(a, b);
+    console.log('最大的为', max.mmID);
+    // => 'b';
+  </script>
+</body>
+</html>

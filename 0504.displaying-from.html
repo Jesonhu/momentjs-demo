@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>显示-时差(之前)</title>
+</head>
+<body>
+  <div class="wrap"></div>
+
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/displaying/from/
+    // @see http://momentjs.cn/docs/#/displaying/from/
+    // Desc: 单位会自动换 年 月 日 时 分 秒 毫秒
+
+    // 案例创建时间为: 2019/03/04 17:23:??:??
+    const m1 = moment([2019, 2, 3]);
+    const m2 = moment([2019, 2, 4]);
+    console.log( m1.from(m2) );
+    // => 1 天前
+    console.log( m1.from(m2, true) );
+    // => 1 天
+
+    // Desc m1.from(m2)
+    // 方法为: m1 为 m2 的前多少，参展对象为 m2。
+    // 由于 m2 在 m1 后面, 下面的写法，安装逻辑来讲是错误的，'昨天 为 今天 前多少', 这是一个错误的说法.
+    // 看下错误的逻辑，moment.js 会怎么处理吧.
+
+    console.log(m2.from(m1));
+    // => 1 天内
+    console.log(m2.from(m1, true));
+    // => 1 天
+  </script>
+</body>
+</html>

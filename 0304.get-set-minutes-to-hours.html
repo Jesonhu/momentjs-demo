@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>取值/赋值-分钟到小时</title>
+</head>
+<body>
+  
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/get-set/minute/
+    // @see http://momentjs.com/docs/#/get-set/minute/
+    // Desc: 传参数-设置值；不传参数-获取值
+    // Desc: 由于获取/设置的 毫秒/秒/分钟/小时 使用方式一致，故不重复添加示例代码.
+    const m = {
+      init() {
+
+      },
+      basic() {
+
+      },
+      getMinutes() {
+        const s = moment().minutes();
+        console.log('获取-分钟:', s);
+      },
+      setMinutes(n = 0) {
+        const s = moment().minutes(n);
+        console.log('设置-分钟:', s);
+      },
+      getUTCMinutes() {
+        const s = moment.utc().minutes();
+        console.log('获取-分钟:', s);
+      },
+      setUTCMinutes(n = 0) {
+        const s = moment.utc().minutes(n);
+        console.log('设置-分钟:', s);
+      }
+    }
+    m.getMinutes();
+  </script>
+</body>
+</html>

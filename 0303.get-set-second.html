@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>取值/赋值-秒</title>
+</head>
+<body>
+  
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+  <script>
+    // @see http://momentjs.cn/docs/#/second/
+    // @see http://momentjs.com/docs/#/second/
+    // Desc: 传参数-设置值；不传参数-获取值
+    const m = {
+      init() {
+
+      },
+      basic() {
+
+      },
+      getSeconds() {
+        const s = moment().seconds();
+        console.log('获取-秒:', s);
+      },
+      setSeconds(n = 0) {
+        const s = moment().seconds(n);
+        console.log('设置-秒:', s);
+      },
+      getUTCSeconds() {
+        const s = moment.utc().seconds();
+        console.log('获取-秒:', s);
+      },
+      setUTCSeconds(n = 0) {
+        const s = moment.utc().seconds(n);
+        console.log('设置-秒:', s);
+      }
+    }
+    m.getSeconds();
+  </script>
+</body>
+</html>
